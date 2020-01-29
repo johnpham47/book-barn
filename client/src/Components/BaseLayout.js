@@ -8,6 +8,7 @@ export class BaseLayout extends Component {
             <div>
                 <Menu />
                 {this.props.children}
+                <Footer />
             </div>
         )
     }
