@@ -13,7 +13,6 @@ class App extends Component {
     this.setState({
       [e.target.name]: e.target.value 
     })
-    console.log(this.state.book)
   }
 
   handleAddBook = (e) => {
@@ -22,13 +21,16 @@ class App extends Component {
       genre: this.state.genre,
       publisher: this.state.publisher,
       year: this.state.year,
-      URL: this.state.imgURL
+      imgURL: this.state.imgURL
     }
     this.setState({
       bookList: this.state.bookList.concat(newBook)
 })
-    fetch('https://localhost8080/submitBook', {
+    fetch('http://localhost:8080/submitBook', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
         title: this.state.title,
         genre: this.state.genre,
@@ -43,11 +45,11 @@ class App extends Component {
   render() {
     return (
       <div>
-        <input name="title" onChange={this.handleBookInput} placeholder="Enter title" />
-        <input name="genre" onChange={this.handleBookInput} placeholder="Enter genre" />
-        <input name="publisher" onChange={this.handleBookInput} placeholder="Enter publisher" />
-        <input name="year" onChange={this.handleBookInput} type="number" placeholder="Enter year" />
-        <input name="imgURL" onChange={this.handleBookInput} placeholder="Enter book URL (optional)" />
+        <input name="title" onChange={this.handleBookInput} type="textbox" placeholder="Enter title" />
+        <input name="genre" onChange={this.handleBookInput} type="textbox" placeholder="Enter genre" />
+        <input name="publisher" onChange={this.handleBookInput} type="textbox" placeholder="Enter publisher" />
+        <input name="year" onChange={this.handleBookInput} type="textbox" placeholder="Enter year" />
+        <input name="imgURL" onChange={this.handleBookInput} type="textbox" placeholder="Enter book URL (optional)" />
         <button onClick={this.handleAddBook}>Add</button>
       </div>
     )
