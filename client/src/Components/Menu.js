@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link, Navlink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 export class Menu extends Component {
     render() {
