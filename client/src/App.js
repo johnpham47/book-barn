@@ -8,7 +8,7 @@ class App extends Component {
       bookList: []
     }
   }
-
+// SET THE PROXY SERVER TO LOCALHOST!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   handleBookInput = (e) => {
     this.setState({
       [e.target.name]: e.target.value 
@@ -16,16 +16,16 @@ class App extends Component {
   }
 
   handleAddBook = (e) => {
-    const newBook = {
-      title: this.state.title,
-      genre: this.state.genre,
-      publisher: this.state.publisher,
-      year: this.state.year,
-      imgURL: this.state.imgURL
-    }
-    this.setState({
-      bookList: this.state.bookList.concat(newBook)
-})
+//     const newBook = {
+//       title: this.state.title,
+//       genre: this.state.genre,
+//       publisher: this.state.publisher,
+//       year: this.state.year,
+//       imgURL: this.state.imgURL
+//     }
+//     this.setState({
+//       bookList: this.state.bookList.concat(newBook)
+// })
     fetch('http://localhost:8080/submitBook', {
       method: 'POST',
       headers: {
@@ -56,4 +56,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default App

@@ -12,7 +12,7 @@ ReactDOM.render(
     <BaseLayout>
         <Switch>
             <Route exact path="/" component = {App} />
-            <Route path="/view" component = {ViewBooks} />
+            <Route path="/view/" component = {ViewBooks} />
         </Switch>
     </BaseLayout>
 
