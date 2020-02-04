@@ -11,6 +11,7 @@ import Register from './Components/Register'
 import { createStore } from 'redux';
 import reducer from './store/reducer'
 import { Provider } from 'react-redux'
+import Login from './Components/Login'
 
 const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
@@ -21,6 +22,7 @@ ReactDOM.render(
             <Switch>
                 <Route exact path="/" component = {HomePage} />
                 <Route path="/register" component = {Register} />
+                <Route path="/login" component = {Login} />
                 <Route path="/add" component = {App} />
                 <Route path="/view/" component = {ViewBooks} />
         </Switch>

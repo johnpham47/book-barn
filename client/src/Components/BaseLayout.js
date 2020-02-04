@@ -8,7 +8,6 @@ export class BaseLayout extends Component {
         return (
             <div>
                 <Menu />
-                <Login />
                 {this.props.children}
                 <Footer />
             </div>
