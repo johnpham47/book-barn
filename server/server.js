@@ -42,6 +42,33 @@ app.post('/register', (req, res) => {
     })
 })
 
+app.post('/login', (req, res) => {
+    console.log('Authenticating login...')
+    let username = req.body.username
+    let password = req.body.password
+
+    models.Users.findOne({
+        where: {
+            username: username
+        }
+    }).then((user) => {
+        if (user) {
+            bcrypt.compare(password, user.password)
+            .then((passwordMatch) => {
+                if (passwordMatch) {
+                    res.json({isAuthenticated: true})
+                }
+                else {
+                    res.json({isAuthenticated: false})
+                }
+            })
+        }
+        else {
+            res.json({isAuthenticated: false})
+        }
+    })
+})
+
 app.post('/submitBook', (req, res) => {
     console.log("submitBook")
     let title = req.body.title
