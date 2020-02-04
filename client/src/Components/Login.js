@@ -5,6 +5,7 @@ import { withRouter} from 'react-router-dom'
 
 const Login = (props) => {
     const [user, setUser] = useState({})
+    const [error, setError] = useState(1)
 
     function handleInput(e) {
         setUser({
@@ -27,12 +28,15 @@ const Login = (props) => {
         })
         .then(response => response.json())
         .then(auth => {
-            if (auth) {
+            if (auth.isAuthenticated) {
                 props.onLogin()
                 props.history.push("/add")
             }
             else {
-                props.history.push("/login")
+                // props.history.push("/login")
+                setError(({
+                    message: 2
+                }))
             }
         })
     }
@@ -40,6 +44,7 @@ const Login = (props) => {
     return (
         <div>
             <h1>Login</h1>
+            {error.message === 2 && <p>Invalid credentials, please try again</p>}
             <label>Username</label>
             <br />
             <input type="text" onChange={handleInput} name="username" />
