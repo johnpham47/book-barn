@@ -33,7 +33,6 @@ const Login = (props) => {
                 props.history.push("/add")
             }
             else {
-                // props.history.push("/login")
                 setError(({
                     message: 2
                 }))

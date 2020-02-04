@@ -1,5 +1,6 @@
 const initialState = {
-    isAuth: false
+    isAuth: false,
+    cart: 0
 }
 
 const reducer = (state = initialState, action) => {
@@ -14,6 +15,12 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 isAuth: false
+            }
+        
+        case 'ADD_TO_CART':
+            return {
+                ...state,
+                cart: state.cart + 1
             }
     }
     return state

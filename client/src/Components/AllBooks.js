@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
+import { connect } from 'react-redux'
 
 
 
@@ -61,6 +62,7 @@ const AllBooks = (props) => {
                     <input name="imgURL" onChange={onHandleChange} type="textbox" placeholder="Update book URL (optional)" />
                     <button key={singleBook.id} onClick={() => onSubmitUpdate(singleBook.id)}>Edit</button>
                     <button onClick={() => onDelete(singleBook.id)}>Delete</button>
+                    <button onClick={() => {props.onAddToCart()}}>Add to Cart</button>
                     <br />
                     <br />
                     <div> Title: {singleBook.title}</div>
@@ -76,4 +78,10 @@ const AllBooks = (props) => {
     )
 } 
 
-export default AllBooks
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onAddToCart: () => dispatch({ type: 'ADD_TO_CART'})
+    }
+}
+
+export default connect(null, mapDispatchToProps) (AllBooks)
